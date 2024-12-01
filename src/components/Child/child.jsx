@@ -14,10 +14,11 @@ class Child extends Component {
             <h5 className="card-title">Product Price:{ProductPrice}</h5>
             <h5 className="card-title">Product Count:{ProductCount}</h5>
             {onSale ? (
-              <h5 className="bg-danger position-absolute top-0 end-0 p-2">
+              <h5 className="bg-danger position-absolute top-0 end-0 p-2 text-light">
                 Sale
               </h5>
             ) : null}
+            <button className="btn btn-outline-info w-100">Delete</button>
           </div>
         </div>
       </div>
