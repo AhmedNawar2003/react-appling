@@ -26,32 +26,39 @@ class App extends Component {
       },
       {
         ProductName: "Iphone 14",
-        ProductId: 1,
+        ProductId: 4,
         ProductPrice: 15000,
         ProductCount: 8,
         onSale: false,
       },
       {
         ProductName: "Iphone 15",
-        ProductId: 1,
+        ProductId: 5,
         ProductPrice: 30000,
         ProductCount: 9,
         onSale: true,
       },
       {
         ProductName: "Iphone 16",
-        ProductId: 1,
+        ProductId: 6,
         ProductPrice: 50000,
         ProductCount: 10,
         onSale: false,
       },
     ],
   };
+  deleteProduct = (prId) => {
+    //Deep copy
+    let newProducts = [...this.state.allProducts];
+    //Remove the product using the prId
+    newProducts = newProducts.filter((product) => product.ProductId !== prId);
+    //Update the state with the new array of products
+    this.setState({ allProducts: newProducts });
+  };
   render() {
-    let { allProducts } = this.state;
     return (
       <div>
-        <Parent products={allProducts}/>
+        <Parent products={this.state.allProducts} delete={this.deleteProduct} />
       </div>
     );
   }
