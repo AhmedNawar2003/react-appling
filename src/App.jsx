@@ -48,17 +48,50 @@ class App extends Component {
     ],
   };
   deleteProduct = (prId) => {
-    //Deep copy
     let newProducts = [...this.state.allProducts];
-    //Remove the product using the prId
-    newProducts = newProducts.filter((product) => product.ProductId !== prId);
-    //Update the state with the new array of products
+    newProducts = newProducts.filter(
+      (product) => product.ProductId !== prId
+    );
     this.setState({ allProducts: newProducts });
   };
+
+  incrementProduct = (prId) => {
+    const newProducts = [...this.state.allProducts];
+    const productIndex = newProducts.findIndex(
+      (product) => product.ProductId === prId
+    );
+    if (productIndex !== -1) {
+      newProducts[productIndex].ProductCount++;
+      this.setState({ allProducts: newProducts });
+    }
+  };
+
+  decrementProduct = (prId) => {
+    let newProducts = [...this.state.allProducts];
+    const productIndex = newProducts.findIndex(
+      (product) => product.ProductId === prId
+    );
+    if (productIndex !== -1) {
+      if (newProducts[productIndex].ProductCount <= 1) {
+        newProducts = newProducts.filter(
+          (product) => product.ProductId !== prId
+        );
+      } else {
+        newProducts[productIndex].ProductCount--;
+      }
+      this.setState({ allProducts: newProducts });
+    }
+  };
+
   render() {
     return (
       <div>
-        <Parent products={this.state.allProducts} delete={this.deleteProduct} />
+        <Parent
+          products={this.state.allProducts}
+          delete={this.deleteProduct}
+          increment={this.incrementProduct}
+          decrement={this.decrementProduct}
+        />
       </div>
     );
   }

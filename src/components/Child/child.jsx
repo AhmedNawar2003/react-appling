@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Child extends Component {
   state = {};
   render() {
-    let { ProductId, ProductName, ProductPrice, ProductCount, onSale} =
+    let { ProductId, ProductName, ProductPrice, ProductCount, onSale } =
       this.props.productDetails;
     return (
       <div className="col-lg-4">
@@ -22,12 +22,26 @@ class Child extends Component {
               onClick={() => {
                 this.props.Delete(ProductId);
               }}
-              className="btn btn-outline-info w-100"
+              className="btn btn-outline-info w-100 my-3"
             >
               Delete
             </button>
-            <button className="btn btn-outline-primary w-100 my-3">+</button>
-            <button className="btn btn-outline-success w-100 my-3">-</button>
+            <button
+              onClick={() => {
+                this.props.increment(ProductId);
+              }}
+              className="btn btn-outline-primary w-100 my-3"
+            >
+              +
+            </button>
+            <button
+              onClick={() => {
+                this.props.decrement(ProductId);
+              }}
+              className="btn btn-outline-success w-100 my-3"
+            >
+              -
+            </button>
           </div>
         </div>
       </div>
