@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-
+import "./child.css"
 class Child extends Component {
-  state = {};
   render() {
     let { ProductId, ProductName, ProductPrice, ProductCount, onSale } =
       this.props.productDetails;
@@ -9,12 +8,12 @@ class Child extends Component {
       <div className="col-lg-4">
         <div className="card my-2">
           <div className="card-body">
-            <h5 className="card-title">Product ID:{ProductId}</h5>
-            <h5 className="card-title">Product Name: {ProductName}</h5>
-            <h5 className="card-title">Product Price:{ProductPrice}</h5>
-            <h5 className="card-title">Product Count:{ProductCount}</h5>
+            <h5 className="card-title id"><span>Product ID :</span> {ProductId}</h5>
+            <h5 className="card-title name"><span>Product Name :</span> {ProductName}</h5>
+            <h5 className="card-title price"><span>Product Price :</span> {ProductPrice}</h5>
+            <h5 className="card-title count"><span>Product Count :</span> {ProductCount}</h5>
             {onSale ? (
-              <h5 className="bg-black position-absolute top-0 end-0 p-2 text-light">
+              <h5 className="sale">
                 Sale
               </h5>
             ) : null}
